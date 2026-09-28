@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Todo List</title>
+<style>
+body{font-family:sans-serif;max-width:400px;margin:30px auto;padding:0 16px}
+li{display:flex;gap:8px;margin:8px 0}
+.done span{text-decoration:line-through;color:gray}
+</style>
+</head>
+<body>
+<h1>My Todo List</h1>
+<input id="task" placeholder="What needs to be done?">
+<button onclick="addTask()">Add</button>
+<ul id="list"></ul>
+<script>
+function addTask(){
+  const input=document.getElementById("task");
+  if(!input.value.trim())return;
+  const li=document.createElement("li");
+  li.innerHTML='<input type="checkbox" onchange="this.parentNode.classList.toggle(\'done\')"><span></span><button onclick="this.parentNode.remove()">Delete</button>';
+  li.querySelector("span").textContent=input.value;
+  document.getElementById("list").appendChild(li);
+  input.value="";
+}
+</script>
+</body>
+</html>
